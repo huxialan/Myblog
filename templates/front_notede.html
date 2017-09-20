@@ -1,0 +1,244 @@
+{% extends "base_with_menu.html" %}
+{% block title %} 若末lan博客&nbsp;|&nbsp;前端笔记 {% endblock title %}
+{% block ext_before_css %}
+
+{% endblock ext_before_css %}
+{% block ext_after_css %}
+{% endblock ext_after_css %}
+{% block content %}
+    <div id="notede">
+        <!-- end header -->
+        <div class="row fn_row">
+            <!-- start 文章列表-->
+            <div class="in_front col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                <div class="row wow fadeInDown">
+                    <h4 style="padding-top: 50px">
+                        <a href="#">前端笔记&nbsp;&nbsp;>&nbsp;&nbsp;<span
+                                style="font-size: 14px;color:#0d8e75">JS/jQuery</span></a>
+                    </h4>
+                </div>
+                <div class="row">
+                    <div class="hotde_art">
+                        <article>
+                            <h3 class="text-center">{{ note.title }}</h3>
+                            <p class="text-center" style="font-size: 12px;color:#999">{{ note.time }}　博主: 若末lan</p>
+                            <div class="article_all">
+                                {{ note.content|safe|escape }}
+                            </div>
+                        </article>
+                        <div class="row updown_actitle">
+                            <a href="#">上一题：没有了</a>
+                            <a href="#">下一篇：建站过程中关于响应式设计的一些体会</a>
+                        </div>
+                    </div>
+                    <div class="hotde_comment">
+                        <div class="row hotde_comment_title"><img src="/static/images/spic/hot_com.png"/>热门评论</div>
+                        <div id="hotde_pucom" class="row hi_publish_com" style="padding-top: 25px">
+                            <div class="form-group">
+                                <label><img src="/static/images/spic/pubcom.png"/>发表评论:</label>
+                                <textarea v-model="text" placeholder="快来说两句吧..." class="form-control"></textarea>
+                                <div class="row">
+                                    <div class="form-group col-lg-6">
+                                        <label for="exampleInputPassword1">昵称</label>
+                                        <input v-model="name" type="text" class="form-control"
+                                               id="exampleInputPassword1"
+                                               placeholder="请输入昵称">
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label for="exampleInputEmail1">Email</label>
+                                        <input v-model="email" type="email" class="form-control" id="exampleInputEmail1"
+                                               placeholder="Email">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div style="text-align: right">
+                                <button @click="save_comments" class="btn btn-info">发表评论</button>
+                            </div>
+                        </div>
+                        <div class="hotde_comment">
+                            <div class="row hotde_comment_title"><img src="/static/images/spic/hot_com.png"/>最新评论</div>
+
+                            <div class="row" id="comments_content">
+                                <!--一级评论-->
+                                {% for comment in comment_list %}
+                                    <div class="h_hotde_com" id="h_hotde_com1">
+                                        <p class="hotde_comment_row_p">
+                                            <a href="#">
+                                                <img src="/static/images/spic/up1.jpg" class="hotde_comment_img"/>&nbsp;&nbsp;
+                                                <span>{{ comment.name }}</span>
+                                            </a> ：
+                                            <span class="hotde_comment_img_date">[{{ comment.time }}]</span>
+                                        </p>
+                                        <p style="margin:-15px auto 15px 50px">{{ comment.content }}</p>
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end 文章列表 -->
+            <!--右边-->
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <div class="fnr_divf">
+                    <h3>最新文章</h3>
+                    <ul class="fn_rul">
+
+                        {% for title_dict in title_list %}
+                            <li>
+                                <span>{{ title_dict.number }}</span>
+                                <a href="/view/{{ title_dict.id }}/">{{ title_dict.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="fnr_divf">
+                    <h3>热门标签</h3>
+                    <span>jQuery</span><span>jQuery</span><span>jQuery</span>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- start 联系我 -->
+        <section id="contact" class="text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 wow fadeInDown" data-wow-delay="2000">
+                        <h3>联系若末LAN</h3>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <p>欢迎小伙伴们来看看，有什么问题赶紧联系我呀^-^</p>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <form action="#" method="post">
+                        <div class="col-md-4 wow fadeInLeft" data-wow-delay="2000">
+                            <input type="text" placeholder="昵称" class="form-control" required>
+                        </div>
+                        <div class="col-md-4 wow fadeInDown" data-wow-delay="2000">
+                            <input type="email" placeholder="邮箱" class="form-control" required>
+                        </div>
+                        <div class="col-md-4 wow fadeInRight" data-wow-delay="2000">
+                            <input type="text" placeholder="主题" class="form-control">
+                        </div>
+                        <div class="col-md-12 wow fadeInDown" data-wow-delay="2000">
+                            <textarea placeholder="有什么想对我说的呀~~" class="form-control"></textarea>
+                        </div>
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6 wow fadeInUp" data-wow-delay="2000">
+                            <input type="submit" value="发送呼啦啦" class="form-control">
+                        </div>
+                        <div class="col-md-3"></div>
+                    </form>
+                </div>
+            </div>
+            <footer class="container">
+                <div class="col-md-12 wow fadeInUp" data-wow-duration="0.4s" data-wow-delay="0.4s">
+                    <span>Copyright © 若末lan博客 2016-2017 保留所有权利 . 浙ICP备13005409号</span>
+                    <p>
+                        <span>本站部分资源来源于网络，如果侵犯了您的权利，请及时和我联系，本站将在第一时间删除相关资源！</span>
+                    </p>
+                    <p>
+                        <span>浙公网安备 33010802002965号</span></p>
+                    <ul class="social_icon">
+                        <!--jithub-->
+                        <li><a href="#" class="fa fa-git"></a></li>
+                        <!--csdn&&&-->
+                        <li><a href="http://blog.csdn.net/qq_33242126" class="fa fa-facebook-square"></a></li>
+                        <!--简书-->
+                        <li><a href="#" class="fa fa-git"></a></li>
+                    </ul>
+                </div>
+            </footer>
+        </section>
+        <!-- end 联系我 -->
+    </div>
+{% endblock content %}
+{% block ext_js %}
+    <script src="/static/js/vue2.0/vue.js"></script>
+    <script>
+        //一级评论
+        $('#hotde_comment_row_combtn').click(function () {
+            $('#hotde_comment_pubresp1').css('display', 'block');
+            $('#hotde_comment_pubresp1>textarea').focus();
+        });
+        $('#hotde_comment_pubresp_div_celb1').click(function () {
+            $('#hotde_comment_pubresp1').css('display', 'none');
+        });
+        //二级评论
+        $('#hotde_comment_seclayer_resb').click(function () {
+            $('#hotde_comment_pubresp2').css('display', 'block');
+            $('#hotde_comment_pubresp2>textarea').focus();
+        });
+        $('#hotde_comment_pubresp_div_celb2').click(function () {
+            $('#hotde_comment_pubresp2').css('display', 'none');
+        });
+
+        //    170410,图片适配
+        $(function () {
+            var himg_div = $('.article_all').width();
+            var himg = $('.article_all img');
+            for (var i = 0; i < himg.length; i++) {
+                if (himg[i].width >= himg_div) {
+                    himg[i].width = himg_div;
+                }
+            }
+        });
+
+
+        //170421一级评论删除
+        $('#h_hotde_com1_del').click(function () {
+            $('#h_hotde_com1').parent().remove();
+            $('#h_hotde_com1_1').parent().remove();
+        });
+        //二级评论删除
+        $('#h_hotde_com1_1del').click(function () {
+            $('#h_hotde_com1_1').parent().remove();
+        });
+
+        var notede = new Vue({
+            delimiters: ['{$', '$}'],
+            el: "#notede",
+            data: {
+                "email": null,
+                "name": null,
+                "text": null,
+                "note":{{ note.id }}
+            },
+            methods: {
+                save_comments: function () {
+                    var self = this;
+                    var data = {
+                        "email": self.email,
+                        "name": self.name,
+                        "text": self.text,
+                        "note": self.note,
+                        "csrfmiddlewaretoken": $("input[name='csrfmiddlewaretoken']").val()
+                    };
+                    var htmls = [];
+                    htmls.push('<div class="h_hotde_com">');
+                    htmls.push('<p class="hotde_comment_row_p">');
+                    htmls.push('<a href="#">');
+                    htmls.push('<img src="/static/images/spic/up1.jpg" class="hotde_comment_img"/>&nbsp;&nbsp;');
+                    htmls.push('<span>丫头</span>');
+                    htmls.push('</a> ：');
+                    htmls.push('<span class="hotde_comment_img_date">[2016-11-09 08:05]</span>');
+                    htmls.push('</p>');
+                    htmls.push('<p style="margin:-15px auto 15px 50px">ღ⊙□⊙╱ 该怎样就怎样呗 那又怎样呢？？？</p>');
+                    htmls.push('</div>');
+                    htmls.push('<hr>');
+                    $.post("/save_comments/", data, function (result) {
+                        result = JSON.parse(result);
+                        console.log(result);
+                        $("#comments_content").prepend(htmls.join(""))
+                    })
+                }
+            }
+        })
+
+
+    </script>
+{% endblock ext_js %}

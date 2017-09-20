@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <title>若末lan博客&nbsp;|&nbsp;管理</title>
+      <link rel="icon" type="image/png" href="/static/images/favicon.png">
+    <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+    <link href="/static/font-awesome/css/font-awesome.css" rel="stylesheet"/>
+    <link href="/static/css/custom-styles.css" rel="stylesheet"/>
+</head>
+<body>
+<div id="hmain">
+    <!-- NAV TOP  -->
+    <nav class="navbar navbar-default top-navbar row" role="navigation">
+        <div class="navbar-header col-md-9 col-sm-8 ">
+            <a class="navbar-brand" href="/bm_index/"><i class="fa fa-gear"></i> <strong>若末lan个人博客</strong></a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <!--<i class="fa fa-bars" style="font-size: 20px;color: #FFF;"></i>-->
+            </button>
+        </div>
+        <ul class="nav nav_hr col-md-3 col-sm-4 ">
+            <span>您好，admin</span>&nbsp;&nbsp;|
+            <button class="btn btn-link" id="nav_outbtn" onfocus="this.blur()">退出</button>
+        </ul>
+    </nav>
+    <!-- NAV TOP  -->
+    <!--  NAV SIDE  -->
+    <nav class="navbar-default navbar-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
+                <!--首页-->
+                <li><a class="active-menu" href="/bm_index/"><i class="fa fa-dashboard"></i>首页</a></li>
+
+                <li><a href="/bmad_frontn_ma/"><i class="fa fa-tasks"></i>前端笔记</a></li>
+                <!--社团-->
+                <li><a href="/bmad_life_log/"><i class="fa fa-legal"></i>生活日志</a></li>
+                <li><a href="/bmad_smalln/"><i class="fa fa-smile-o"></i>闲言碎语</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!--  NAV SIDE  -->
+    <!--  PAGE WRAPPER  -->
+    <div id="page-wrapper">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-header">
+                           &nbsp;若末lan个人博客
+                            &nbsp;<small style="font-size: 14px"><i class="fa fa-magnet"></i></small>
+                        </h1>
+						<ol class="breadcrumb" style="height: 50px;">
+                            <li class="active" style="margin-top: -10px">首页</li>
+                            <li><a href="/bm_index/bm_intro/">说明</a></li>
+                            <!--<li><a href="#">q</a></li>-->
+                            <!--<li class="active">a</li>-->
+                        </ol>
+                    </div>
+                </div>
+           <!-- /. ROW  -->
+                <div class="row">
+                    <!--前端笔记-->
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <a href="/bmad_frontn_ma/" class="index_ha">
+                            <div class="panel panel-primary text-center no-boder bg-color-green">
+                            <div class="panel-left pull-left green"><i class="fa fa-volume-up fa-5x"></i></div>
+                            <div class="panel-right">
+								<h3>前端笔记</h3>
+                               <strong>hello world!</strong>
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+                    <!--生活日志-->
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <a href="/bmad_life_log/" class="index_ha">
+                            <div class="panel panel-primary text-center no-boder bg-color-blue">
+                            <div class="panel-left pull-left blue"><i class="fa fa-magic fa-5x"></i></div>
+                            <div class="panel-right">
+							    <h3>生活日志</h3>
+                                <strong> hello world!</strong>
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+                    <!--闲言碎语-->
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <a href="/bmad_smalln/" class="index_ha">
+                            <div class="panel panel-primary text-center no-boder bg-color-red">
+                            <div class="panel-left pull-left red"><i class="fa fa fa-user fa-5x"></i></div>
+                            <div class="panel-right">
+                                <h3>闲言碎语</h3>
+                                <strong> hello world!</strong>
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- /. ROW  -->
+
+                <footer><p>Copyright &copy; 2016.ruomolan All rights reserved.</p></footer>
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+    <!-- /. PAGE WRAPPER  -->
+</div>
+ <script src="/static/js/jquery-1.11.2.min.js"></script>
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script src="/static/js/jquery.metisMenu.js"></script>
+<script src="/static/js/custom-scripts.js"></script>
+</body>
+</html>

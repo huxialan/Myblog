@@ -1,0 +1,187 @@
+{% extends "base_with_menu.html" %}
+{% block title %} 若末lan博客&nbsp;|&nbsp;留言板 {% endblock title %}
+{% block ext_before_css %}
+
+{% endblock ext_before_css %}
+{% block ext_after_css %}
+{% endblock ext_after_css %}
+{% block content %}
+    <!-- start 文章列表-->
+    <div class="row meb_row">
+        <!-- start 文章列表-->
+        <div class="meb_left col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-lg-7 col-md-7 col-sm-10 col-xs-12">
+            <div class="row wow fadeInDown">
+                <h4 class="infd_h4" style="color:#00866e">
+                   欢迎来到留言板
+                </h4>
+                <p style="color:#00bd9c">留下你的网站吧，可以作为友情链接的哟^_^</p> <hr>
+            </div>
+            <div class="row meb_lists">
+                <div class="row">
+                    <!--一级留言-->
+                    <div class="meb_com"  id="h_hotde_com1">
+                        <p class="meb_comment_row_p">
+                            <a href="#">
+                                <img src="/static/images/spic/upic.jpg" class="meb_comment_img"/>&nbsp;&nbsp;丫头
+                            </a> ：
+                            <span class="meb_comment_img_date">[2016-11-09 08:05]</span>
+                            <span class="meb_comment_zancom">
+                                <span>
+                                    【回复】
+                                </span>
+                            </span>
+                        </p>
+                        <p style="margin:-15px auto 15px 50px">ღ⊙□⊙╱ 该怎样就怎样呗  那又怎样呢？？？</p>
+                    </div>
+                    <!--发表回复框-->
+                    <div class="meb_comment_pubresp" id="meb_comment_pubresp1">
+                        <textarea class="form-control"></textarea>
+                        <div class="meb_comment_pubresp_div text-right">
+                            <button type="button" id="meb_comment_pubresp_div_celb1" class="btn btn-danger btn-sm">取消</button>
+                            <button type="button" class="btn btn-success btn-sm">回复</button></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!--一级留言-->
+                    <div class="meb_com">
+                        <p class="meb_comment_row_p">
+                            <a href="#">
+                                <img src="/static/images/spic/upic.jpg" class="meb_comment_img"/>&nbsp;&nbsp;丫头
+                            </a> ：
+                            <span class="meb_comment_img_date">[2016-11-09 08:05]</span>
+                            <span class="meb_comment_zancom">
+                                <span>
+                                    【回复】
+                                </span>
+                            </span>
+                        </p>
+                        <p style="margin:-15px auto 15px 50px">ღ⊙□⊙╱ 该怎样就怎样呗  那又怎样呢？？？</p>
+                    </div>
+                    <!--发表回复框-->
+                    <div class="meb_comment_pubresp">
+                        <textarea class="form-control"></textarea>
+                        <div class="meb_comment_pubresp_div text-right">
+                            <button type="button" class="btn btn-danger btn-sm">取消</button>
+                            <button type="button" class="btn btn-success btn-sm">回复</button></div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <ul class="pagination">
+                    <li class="{% if page_active == 1 %}disabled {% endif %}"><a
+                            href="/font_note/{{ sort_id }}/{{ page_previous }}/">上一页</a></li>
+
+                    <li><a href="#" style="border: none;outline: none">第{{ page_active }}页/共{{ page_foo }}页</a></li>
+
+                    <li class="{% if page_active == page_foo %}disabled{% endif %}"><a
+                            href="/font_note/{{ sort_id }}/{{ page_next }}/">下一页</a></li>
+                </ul>
+
+            </div>
+        </div>
+        <!-- end 文章列表 -->
+        <!--右边-->
+        <div class="col-lg-offset-0 col-lg-3 col-md-offset-0 col-md-3 col-sm-offset-1 col-sm-10 col-xs-12 fnr">
+            <div class="fnr_divf">
+                <h3>最新文章</h3>
+                <hr>
+                <ul class="fn_rul">
+                    {% for title in title_list %}
+                        <li>
+                            <span>{{ title.number }}</span>
+                            <a href="/view/{{ title.id }}/" title="{{ title.title }}">{{ title.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="fnr_divs">
+                <h3>热门标签</h3>
+                <hr>
+                <div id="tag-cloud"></div>
+            </div>
+            <!--友情链接-->
+            <div class="fnr_webs fnr_divs">
+                  <h3>友情链接</h3>
+                <hr>
+               <ul>
+                    {% for fwobj in fwobjs%}
+                    <li><a href="{{fwobj.hfw_web}}">{{fwobj.hfw_name}}</a></li>
+                    {% endfor %}
+                    <!--<li><a href="http://baijunyao.com/">白俊遥博客</a></li>
+                    <li><a href="http://www.zhangxinxu.com/wordpress/">张旭鑫博客</a></li>
+                    <li><a href="http://www.jianshu.com/">简书</a></li>
+                    <li><a href="https://wujunze.com/">吴均泽博客</a></li>
+                    <li><a href="http://www.runoob.com/">菜鸟教程</a></li>
+                    <li><a href="https://segmentfault.com/">segmentfault</a></li>
+                    <li><a href="http://www.daqianduan.com/" title="关注前端开发,关注用户体验">大前端</a></li>
+                    <li><a href="https://www.yuxuan66.com/" title="欢迎光临，我们一直在努力">雨轩博客</a></li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- end 文章列表 -->
+    <!-- start 联系我 -->
+    <section id="contact" class="text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 wow fadeInDown" data-wow-delay="2000">
+                    <h3>联系若末LAN</h3>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <p>欢迎小伙伴们来看看，有什么问题赶紧联系我呀^-^</p>
+                </div>
+                <div class="col-md-2"></div>
+                <form action="#" method="post">
+                    <div class="col-md-4 wow fadeInLeft" data-wow-delay="2000">
+                        <input type="text" placeholder="昵称" class="form-control" required>
+                    </div>
+                    <div class="col-md-4 wow fadeInDown" data-wow-delay="2000">
+                        <input type="email" placeholder="邮箱" class="form-control" required>
+                    </div>
+                    <div class="col-md-4 wow fadeInRight" data-wow-delay="2000">
+                        <input type="text" placeholder="主题" class="form-control">
+                    </div>
+                    <div class="col-md-12 wow fadeInDown" data-wow-delay="2000">
+                        <textarea placeholder="有什么想对我说的呀~~" class="form-control"></textarea>
+                    </div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6 wow fadeInUp" data-wow-delay="2000">
+                        <input type="submit" value="发送呼啦啦" class="form-control">
+                    </div>
+                    <div class="col-md-3"></div>
+                </form>
+            </div>
+        </div>
+        <div class="google_map">
+            <div id="map-canvas"></div>
+        </div>
+        <footer class="container">
+            <div class="col-md-12 wow fadeInUp" data-wow-duration="0.4s" data-wow-delay="0.4s">
+                <span>Copyright © 若末lan博客 2016-2017 保留所有权利 . 浙ICP备13005409号</span>
+                <p>
+                    <span>本站部分资源来源于网络，如果侵犯了您的权利，请及时和我联系，本站将在第一时间删除相关资源！</span>
+                </p>
+                <p>
+                    <span>浙公网安备 33010802002965号</span></p>
+                <ul class="social_icon">
+                    <li><a href="#" class="fa fa-facebook"></a></li>
+                    <li><a href="#" class="fa fa-twitter"></a></li>
+                    <li><a href="#" class="fa fa-instagram"></a></li>
+                    <li><a href="#" class="fa fa-apple"></a></li>
+                    <li><a href="#" class="fa fa-pinterest"></a></li>
+                    <li><a href="#" class="fa fa-google"></a></li>
+                    <li><a href="#" class="fa fa-wordpress"></a></li>
+                </ul>
+            </div>
+        </footer>
+    </section>
+    <!-- end 联系我 -->
+
+
+{% endblock content %}
+{% block ext_js %}
+
+{% endblock ext_js %}

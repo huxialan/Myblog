@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="topic_detail">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>闲言碎语</title>
+    <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+    <link href="/static/font-awesome/css/font-awesome.css" rel="stylesheet"/>
+    <link href="/static/css/custom-styles.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/static/css/wangEditor.min.css">
+    <style>
+        /*图片上传预览*/
+        .u_pic > div {
+            float: left
+        }
+
+        #preview {
+            display: block;
+            width: 280px;
+            height: 160px;
+            border: #ddd solid 1px
+        }
+
+        #preview img {
+            display: block;
+            width: 280px;
+            height: 160px;
+        }
+
+        .cho_picbtn {
+            position: relative;
+        }
+
+        @media (min-width: 1330px) {
+            .cho_picbtn {
+                position: relative;
+                margin: 15px;
+            }
+        }
+
+        @media (max-width: 1330px) {
+            .cho_picbtn {
+                position: relative;
+                margin-top: 15px;
+                margin-left: 5px;
+            }
+        }
+
+        .cp_btn {
+            height: 30px;
+            width: 75px;
+            color: #fff;
+            background-color: #64ccb1;
+            border: 1px solid #CDCDCD;
+            border-radius: 3px
+        }
+
+        .hfile {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 30px;
+            filter: alpha(opacity:0);
+            opacity: 0;
+            width: 75px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="hmain" id="sp_main">
+    <!-- NAV TOP  -->
+    <nav class="navbar navbar-default top-navbar row" role="navigation">
+        <div class="navbar-header col-md-9 col-sm-8 ">
+            <a class="navbar-brand" href="/bm_index/"><i class="fa fa-gear"></i> <strong>若末LAN个人博客</strong></a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <!--<i class="fa fa-bars" style="font-size: 20px;color: #FFF;"></i>-->
+            </button>
+        </div>
+        <ul class="nav nav_hr col-md-3 col-sm-4 ">
+            <span>您好，admin</span>&nbsp;&nbsp;|
+            <button class="btn btn-link" id="nav_outbtn" onfocus="this.blur()">退出</button>
+        </ul>
+    </nav>
+    <!-- NAV TOP  -->
+    <!--  NAV SIDE  -->
+    <nav class="navbar-default navbar-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
+                <!--首页-->
+                <li><a href="/bm_index/"><i class="fa fa-dashboard"></i>首页</a></li>
+
+                <li><a href="/bmad_frontn_ma/"><i class="fa fa-tasks"></i>前端笔记</a></li>
+                <!--社团-->
+                <li><a href="/bmad_life_log/"><i class="fa fa-legal"></i>生活日志</a></li>
+                <li><a href="/bmad_smalln/" class="active-menu"><i class="fa fa-smile-o"></i>闲言碎语</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!--  NAV SIDE  -->
+    <!-- PAGE INNER  -->
+    <div id="page-wrapper">
+        <div id="page-inner">
+            <div class="row">
+                <h1 class="page-header">
+                    &nbsp; 生活日志发表&nbsp;
+                    <small style="font-size: 14px"><i class="fa fa-magnet"></i>&nbsp;&nbsp;Show up your stats</small>
+                </h1>
+            </div>
+            <!-- /. ROW  -->
+
+            <div class="row">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div style="position: fixed;top:100px;right:80px;opacity: 0.9;z-index: 10;">
+                            <button type="button" id="sn_save_sub" @click="save_note" class="btn btn-success btn-lg">
+                                保存提交
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+                        <form id="form_url" action="/bmad_smalln/{{action}}" method="post" class="text-center">
+                            {% csrf_token %}
+                            <!--<input type="text" name="q">-->
+                            <textarea id="sn_text" style="width:90%;height: 200px;padding:10px 15px;resize: vertical"
+                                      placeholder="想说什么就说什么吧......  ">{{obj.hsn_content}}</textarea>
+
+                            <!--<input type="submit" value="Submit">-->
+                        </form>
+
+                        <p>{{ rlt }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- /. ROW  -->
+        </div>
+        <footer><p>Copyright &copy; 2016.ruomolan All rights reserved.</p></footer>
+        <!-- /. PAGE INNER  -->
+    </div>
+    <!-- /. PAGE WRAPPER  -->
+</div>
+
+<script src="/static/js/jquery-1.11.2.min.js"></script>
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script src="/static/js/jquery.metisMenu.js"></script>
+<script src="/static/js/custom-scripts.js"></script>
+<script src="/static/js/vue2.0/vue.js"></script>
+<script>
+
+    $(function () {
+        $('#sn_save_sub').click(function () {
+            var sn = $('#sn_text').val();
+            var url = $('#form_url').attr('action');
+            $.post(url, {'text_value': sn}, function (result) {
+                if (result) result = JSON.parse(result);
+                if (result.error) alert(result.error);
+                else window.location.href = '/bmad_smalln/'
+            })
+        })
+    });
+
+
+</script>
+</body>
+</html>
